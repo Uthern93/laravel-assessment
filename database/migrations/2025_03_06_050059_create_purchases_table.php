@@ -4,24 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+return new class extends Migration {
+    public function up()
     {
-        Schema::create('purchases', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('tblPurchase', function (Blueprint $table) {
+            $table->string('BillNo')->primary();
+            $table->string('MemberID');
+            $table->date('SalesDate');
+            $table->decimal('Amount', 10, 2);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('purchases');
+        Schema::dropIfExists('tblPurchase');
     }
 };
+
